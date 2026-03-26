@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: psc-coupens
+    env: python
+    plan: free
+    buildCommand: pip install -r psc_coupens/requirements.txt
+    startCommand: gunicorn --chdir psc_coupens app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: psc-coupens-db
+          property: connectionString
+
+databases:
+  - name: psc-coupens-db
+    plan: free
