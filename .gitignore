@@ -4,6 +4,17 @@ __pycache__/
 *.pyc
 *.db
 .pytest_cache/
+venv/
 
 # Local / sensitive data
 Docs/*.xlsx
+
+# Do not commit frozen/backup repo copies
+Freeze_psc_coupens/
+
+# Uploaded prize images (runtime)
+psc_coupens_app/static/uploads/**
+!psc_coupens_app/static/uploads/
+!psc_coupens_app/static/uploads/.gitkeep
+!psc_coupens_app/static/uploads/coupons/
+!psc_coupens_app/static/uploads/coupons/.gitkeep

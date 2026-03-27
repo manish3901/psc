@@ -3,8 +3,8 @@ services:
     name: psc-coupens
     env: python
     plan: free
-    buildCommand: pip install -r psc_coupens/requirements.txt
-    startCommand: gunicorn --chdir psc_coupens app:app
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
     envVars:
       - key: SECRET_KEY
         generateValue: true
