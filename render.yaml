@@ -5,8 +5,8 @@ services:
     plan: free
     buildCommand: pip install -r requirements.txt
     # NOTE: Render Free tier doesn't support `preDeployCommand`, so we init DB in startCommand.
-    # `scripts/init_db.py` is idempotent (create_all), safe to run on each deploy.
-    startCommand: python scripts/init_db.py && gunicorn app:app --bind 0.0.0.0:$PORT
+    # `scripts.init_db` is idempotent (create_all), safe to run on each deploy.
+    startCommand: python -m scripts.init_db && gunicorn app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: SECRET_KEY
         generateValue: true
